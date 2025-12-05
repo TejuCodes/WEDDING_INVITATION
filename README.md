@@ -13,17 +13,17 @@ https://TejuCodes.github.io/wedding-invitation/
 
 ✨ Features
 
-✔ Responsive Layout – Works on all devices
-✔ Tamil / English Language Switch
-✔ Smooth Scroll & AOS Animations
-✔ Sticky Welcome Banner
-✔ Wedding Boarding Pass Theme
-✔ Countdown Timer
-✔ Google Calendar Add-Event Button
-✔ QR Code for Location
-✔ Event Timeline Section
-✔ Venue Cards with Google Map links
-✔ Auto-Play Background Music (User-activated)
+✔ Responsive Layout – Works on all devices<br>
+✔ Tamil / English Language Switch<br>
+✔ Smooth Scroll & AOS Animations<br>
+✔ Sticky Welcome Banner<br>
+✔ Wedding Boarding Pass Theme<br>
+✔ Countdown Timer<br>
+✔ Google Calendar Add-Event Button<br>
+✔ QR Code for Location<br>
+✔ Event Timeline Section<br>
+✔ Venue Cards with Google Map links<br>
+✔ Auto-Play Background Music (User-activated)<br>
 
 📂 Project Structure
 ├── index.html
@@ -35,26 +35,26 @@ https://TejuCodes.github.io/wedding-invitation/
 
 🛠️ Technologies Used
 
-HTML5
+HTML5<br>
 
-CSS3 (Animations, Responsive Design)
+CSS3 (Animations, Responsive Design)<br>
 
-JavaScript (Countdown, Toggle, Audio)
+JavaScript (Countdown, Toggle, Audio)<br>
 
 AOS Library
+<br><br>
+Google Fonts<br>
+<br>
+Google Maps / Calendar Integration<br>
 
-Google Fonts
+🚀 How to Run<br>
+<br>
+You can simply download the project folder and open:<br>
 
-Google Maps / Calendar Integration
-
-🚀 How to Run
-
-You can simply download the project folder and open:
-
-index.html
+index.html<br>
 
 
-Or host it online with GitHub Pages:
+Or host it online with GitHub Pages:<br>
 
 Push code to GitHub
 

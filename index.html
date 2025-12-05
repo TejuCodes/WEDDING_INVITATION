@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💕</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+/* GLOBAL */
+/* ---------------------------
+   GLOBAL STYLES
+---------------------------- */
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background: #e7dccb;
+  color: #4b3a2f;
+}
+
+/* Wrapper fade (kept for compatibility even if wrapper not in HTML) */
+.wrapper {
+  min-height: 200vh;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  --fade-opacity: 0;
+}
+
+.wrapper::after {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  background: rgba(255,255,255,0);
+  opacity: var(--fade-opacity);
+  transition: opacity .2s linear;
+}
+
+/* ---------------------------
+   MAIN CARD (Invitation Box)
+---------------------------- */
+.card {
+  position: relative;
+  max-width: 600px;
+  margin: 80px auto;
+  padding: 35px;
+  background: rgba(255,255,255,0.7);
+  border: 4px double #8b1e2d;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  backdrop-filter: blur(2px);
+  text-align: center;
+}
+
+/* ---------------------------
+   LANGUAGE BUTTON
+---------------------------- */
+#langBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #8b1e2d;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 9999;
+  font-family: inherit;
+}
+
+/* ---------------------------
+   WELCOME IMAGE FADE
+---------------------------- */
+#welcomeImg {
+  width: 100%;
+  min-height: 500px;
+  background-image: url('./images/wa.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  transition: opacity .5s ease;
+}
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+  #welcomeImg { min-height: 350px; background-attachment: scroll; }
+}
+
+/* ---------------------------
+   BOARDING PASS MAIN WRAPPER
+---------------------------- */
+.wedding-ticket {
+  width: 95%;
+  max-width: 900px;
+  margin: 30px auto;
+  background: repeating-linear-gradient(
+      45deg, #fff8f1 0, #fff8f1 10px, #fdf3e3 10px, #fdf3e3 20px
+  );
+  border: 2px solid #d1b18c;
+  border-radius: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  position: relative;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Curved Ticket Edges */
+.wedding-ticket::before,
+.wedding-ticket::after {
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: #e7dccb;
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.wedding-ticket::before { left: -14px; }
+.wedding-ticket::after { right: -14px; }
+
+/* ---------------------------
+   LEFT SECTION
+---------------------------- */
+.ticket-left {
+  flex: 1;
+  padding: 25px;
+  background: rgba(255,255,255,0.6);
+  min-width: 280px;
+  position: relative;
+}
+
+/* Animated tear-line */
+.ticket-left::after {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: repeating-linear-gradient(
+      to bottom, #c49a6c 0px, #c49a6c 8px, transparent 8px, transparent 15px
+  );
+  animation: tearMove 1.8s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes tearMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 20px; }
+}
+
+.ticket-title {
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  color: #000;
+}
+
+/* Countdown */
+.countdown-box {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-top: 15px;
+  gap: 6px; /* better spacing */
+}
+
+.countdown-box div {
+  flex: 1;
+  padding: 12px 10px;   /* base padding */
+  background: #f7e9d7;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #5a3e2b;
+  font-weight: 600;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .countdown-box {
+    gap: 5px;
+  }
+
+  .countdown-box div {
+    padding: 10px 8px;
+    font-size: 13px;
+  }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+  .countdown-box {
+    gap: 4px;
+  }
+
+  .countdown-box div {
+    padding: 8px 5px; /* smallest padding */
+    font-size: 12px;
+    border-radius: 8px;
+  }
+}
+
+/* Ultra-small phones */
+@media (max-width: 360px) {
+  .countdown-box div {
+    padding: 6px 4px;
+    font-size: 11px;
+  }
+}
+
+/* ---------------------------
+   RIGHT SECTION
+---------------------------- */
+/* RIGHT SECTION */
+/* Right Panel */
+.ticket-right {
+  width: 240px;
+  min-width: 260px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.65);
+  text-align: center;
+  border-left: 2px solid #d1b18c;
+
+  /* Slide-in animation */
+  transform: translateX(50px);
+  opacity: 0;
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+/* Slide-in Animation Keyframes */
+@keyframes slideInRight {
+  from {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* QR Code */
+.qr-code {
+  width: 120px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 2px solid #d1b18c;
+  background: #fff;
+  margin: 10px auto 5px;
+  display: block;
+}
+
+/* "Scan Me" Label */
+.scan-label {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #8a6946;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+
+/* ============================
+      📱 TABLET (≤ 768px)
+============================ */
+@media (max-width: 768px) {
+  .ticket-right {
+    width: 100%;
+    min-width: 100%;
+    padding: 20px;
+  }
+
+  .qr-code {
+    width: 110px;
+    padding: 5px;
+  }
+}
+
+/* ============================
+      📱 MOBILE (≤ 480px)
+============================ */
+@media (max-width: 480px) {
+  .ticket-right {
+    padding: 18px;
+    border-radius: 10px;
+    margin-top: 10px;
+  }
+
+  .qr-code {
+    width: 100px;
+    padding: 4px;
+    border-radius: 10px;
+  }
+}
+
+/* ============================
+   📱 SMALL PHONES (≤ 360px)
+============================ */
+@media (max-width: 360px) {
+  .ticket-right {
+    padding: 16px;
+  }
+
+  .qr-code {
+    width: 90px;
+    padding: 3px;
+  }
+}
+
+/* ---------------------------
+   FOOTER
+---------------------------- */
+.creator-footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: #6c4f2d;
+  opacity: 0.7;
+  font-family: "Poppins", sans-serif;
+}
+
+.creator-footer p { margin: 0; }
+
+/* ❤️ Heart-line divider */
+.heart-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto 20px;
+  font-size: 22px;
+  color: #996201;
+  font-weight: bold;
+}
+
+.heart-divider span {
+  flex: 1;
+  height: 2px;
+  background: #8b5305;
+  margin: 0 10px;
+}
+
+.calendar-btn {
+  display: inline-block;
+  padding: 10px 18px;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  background: #b8926a; /* gold tone */
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+
+/* Hover */
+.calendar-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+/* Click */
+.calendar-btn:active {
+  transform: scale(0.95);
+}
+/* Venue Section Layout */
+.venue-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 30px 20px;
+  flex-wrap: wrap; /* Makes it responsive */
+}
+
+/* Card Style */
+.venue-card {
+  width: 330px;
+  background: #fbf4ea;
+  border: 2px solid #d1b18c;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.venue-card h1 {
+  font-size: 20px;
+  color: #5a3e2b;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.venue-card p {
+  font-size: 15px;
+  color: #6d4b38;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
+/* Hover Animation */
+.venue-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+
+ 
+
+/* Responsive */
+@media (max-width: 480px) {
+  .venue-container {
+    gap: 15px;
+    padding: 20px 10px;
+  }
+
+  .venue-card {
+    width: 100%;
+    padding: 18px;
+  }
+
+  .venue-card h1 {
+    font-size: 18px;
+  }
+
+  .map-btn {
+    font-size: 14px;
+    padding: 11px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+<!-- AUTOPLAY MUSIC -->
+<audio id="bg-music" autoplay loop muted playsinline>
+    <source src="mu.mp3" type="audio/mp3">
+</audio>
+
+<script>
+document.addEventListener("click", function () {
+    const audio = document.getElementById("bg-music");
+    audio.muted = false;
+    audio.play();
+}, { once: true });
+</script>
+
+<div class="wrapper">
+<!-- TOP WELCOME IMAGE -->
+<div id="welcomeImg" style="position: sticky"></div>
+<button id="langBtn">தமிழ்</button>
+<div class="heart-divider">
+  <span></span>
+  ❤️
+  <span></span>
+</div>
+<!-- MAIN FIXED BACKGROUND SECTION -->
+<div class="card" >
+
+    <h2 class="section-heading lang" style="font-size: 40px;" 
+        data-en="Wedding Invitation"
+        data-ta="திருமண அழைப்பிதழ் ">Wedding Invitation</h2>
+
+    <p class="lang" style="font-size: 12px;"
+        data-en="Alangkovil Sri ulagamatha Periyandara Swamigal Thunai <br>Murugan Thunai"
+        data-ta="ஆலங்கோவில் ஸ்ரீ உலகமாதா பெரியபண்டாரா சுவாமிகள் துணை<br>முருகன் துணை">
+        Alangkovil Sri ulagamatha Periyapandara Swamigal Thunai <br>Murugan Thunai
+    </p>
+
+    <p class="lang"
+       data-en="Granddaughter of Vairamani - Meenakshi"
+       data-ta="வைரமணி - மீனாட்சி அவர்களின் பேத்தி">
+       Granddaughter of Vairamani Nadar - Meenakshi
+    </p>
+
+    <p class="lang"
+       data-en="Mr. S. P. S. V. Jayaseelan - Mrs. Sathiya cordially invite you and your family…"
+       data-ta="திரு. எஸ். பி. எஸ். வி. ஜெயசீலன் - திருமதி சத்யா ஆகியோர் தங்கள் மகளின் திருமணத்திற்கு…">
+       Mr. S. P. S. V. Jayaseelan - Mrs. Sathya cordially invite…
+    </p>
+
+    <h3 class="section-heading lang" style="font-size: 30px;"
+        data-en="Selvi. J. Poornavika, B.Sc Maths"
+        data-ta="செல்வி. ஜே. பூர்ணவிகா, B.Sc ">
+        Selvi. J. Poornavika, B.Sc 
+    </h3>
+
+    <h3 class="section-heading lang"
+        data-en="with"
+        data-ta="திருமணம் நடைபெறும்">
+        with
+    </h3>
+
+    <p class="lang"
+       data-en="Grandson of Shanmuga Nadar - Sundaravalli Ammal"
+       data-ta="சண்முகநாடார் - சுந்தரவல்லி அம்மாள் இவர்களின் பேரன்">
+       Grandson of Shanmuga Nadar - Sundaravalli Ammal
+    </p>
+
+    <p class="lang"
+       data-en="Son of S Bala Krishnan - B Kamala"
+       data-ta="திரு. எஸ். பாலகிருஷ்ணன் - திருமதி பி. கமலா இவர்களின் மகன்">
+       Son of S Bala Krishnan - B Kamala
+    </p>
+
+    <h3 class="section-heading lang" style="font-size: 30px"
+        data-en="Selvan. B. Vignesh Kumar,MBA"
+        data-ta="செல்வன். பி. விக்னேஷ் குமார், MBA">
+        Selvan. B. Vignesh Kumar MBA
+    </h3>
+
+    <p class="lang"
+       data-en="On Friday, 13th Feb 2026"
+       data-ta="வெள்ளிக்கிழமை, 13 பிப்ரவரி 2026">
+       On Friday, 13th Feb 2026
+    </p>
+    <p class="lang"
+       data-en="Marriage at Arulmigu Sri Vala Subramania Swamy Kovil Virudhunagar"
+       data-ta="விருதுநகர் அருள்மிகு பாலசுப்ரமணிய சுவாமி கோவிலில் திருமணம்">
+       Marriage at Arulmigu Sri Vala Subramania Swamy Kovil Virudhunagar
+    </p>
+
+    <p class="lang"
+       data-en="Followed by the function at SRP Thirumana Mahal, Aruppukottai Road, Virudhunagar"
+       data-ta="பின்பு நடைபெறும் நிகழ்ச்சி: எஸ்.ஆர்.பி திருமண மஹால், அருப்புக்கோட்டை ரோடு, விருதுநகர்">
+       Followed by the function…
+    </p>
+
+</div>
+
+		
+	 <div class="heart-divider">
+  <span></span>
+  ❤️
+  <span></span>
+</div>
+
+ 
+<div class="wedding-ticket" data-aos="zoom-out-down">
+
+  <div class="ticket-left">
+    <h2 class="ticket-title" style="color: #000000;">Wedding Boarding Pass</h2>
+
+    <div style="color: #000000;">
+      <p style="color: #000000;"><strong>Date:</strong> Feb 13, 2026</p>
+      <p style="color: #000000;"><strong>Venue:</strong> Virudhunagar, Tamil Nadu</p>
+      <p style="color: #000000;"><strong>Gate:</strong> 07</p>
+      <p style="color: #000000;"><strong>Seat:</strong> LOVE-28</p>
+    </div>
+
+    <div class="countdown-box">
+      <div id="cd-days"></div>
+      <div id="cd-hours"></div>
+      <div id="cd-min"></div>
+      <div id="cd-sec"></div>
+    </div>
+  </div>
+<div class="ticket-right">
+  <p class="small-title">Google Calendar</p>
+
+  <a 
+    href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Vignesh+Kumar+%26+Poornavika+Wedding&dates=20260212T050000/20260213T070000&details=Wedding+Ceremony+at+SRP+Marriage+Hall.+Map:+https://share.google/YkCeD10O7tzLcbpdE&location=SRP+Marriage+Hall" 
+    target="_blank" 
+    class="calendar-btn">
+    Add Reminder
+  </a>
+
+  <!-- QR code -->
+  <div class="barcode" data-aos="flip-left">
+    <img src="images/wedding_location_qr.png" alt="QR Code" class="qr-code">
+	<center>Scan here</center>
+  </div>
+</div>
+
+
+</div>
+<section class="venue-container">
+
+  <!-- Hall Details -->
+  <div class="venue-card" data-aos="fade-up">
+    <h1>  Wedding Hall</h1>
+
+    <p><strong>Hall Name:</strong> SRP Marriage Hall</p>
+    <p><strong>Location:</strong> Virudhunagar, Tamil Nadu</p>
+    <p><strong>Address:</strong> SH 42, Anna Nagar, Virudhunagar, Tamil Nadu 626001</p>
+
+    <a class="calendar-btn"
+       href="https://maps.app.goo.gl/2jPuoPACLixvVb9S6"
+       target="_blank">
+       📍 View on Google Maps
+    </a>
+  </div>
+
+  <!-- Temple Details -->
+  <div class="venue-card" 	data-aos="fade-down">
+    <h1> Morning Marriage (Temple)</h1>
+
+    <p><strong>Temple Name:</strong> Sri Subramaiya Swamy Temple</p>
+    <p><strong>Time:</strong> 8:00 AM – 10:00 AM</p>
+    <p><strong>Address:</strong> Sivagami Puram, Virudhunagar, Tamil Nadu 626001</p>
+
+    <a class="calendar-btn"
+       href="https://maps.app.goo.gl/X82UXytg7spSCuy8A"
+       target="_blank">
+       📍 Navigate to Temple
+    </a>
+  </div>
+
+</section>
+<div class="heart-divider">
+  <span></span>
+  ❤️
+  <span></span>
+</div>
+<section class="events-section">
+
+  <h2 class="events-title" data-aos="fade-up">Wedding Events</h2>
+
+  <div class="event-card" data-aos="fade-right">
+    <h3>Flowering Ceremony</h3>
+    <p><strong>Date:</strong> Nov 23, 2025</p>
+   <p><strong>Venue:</strong> Pagalam Wedding Hall</p>
+
+  </div>
+
+  <div class="event-card" data-aos="fade-left">
+    <h3>Engagement</h3>
+    <p><strong>Date:</strong> Feb 12, 2026</p>
+    <p><strong>Venue:</strong> SRP Marriage Hall</p>
+  </div>
+
+  <div class="event-card" data-aos="fade-right">
+    <h3>Marriage</h3>
+    <p><strong>Date:</strong> Feb 13, 2026</p>
+    <p><strong>Venue:</strong> Sri Subramaiya Swamy Temple</p>
+  </div>
+
+  <div class="event-card" data-aos="fade-left">
+    <h3>Kari Sapadu</h3>
+    <!-- <p><strong>Time:</strong> After Marriage</p> -->
+    <p><strong>Date:</strong> Feb 13, 2026</p>
+    <p><strong>Venue:</strong> SRP Marriage Hall</p>
+  </div>
+    <div class="event-card" data-aos="fade-left">
+    <h3>Games</h3>
+    <!-- <p><strong>Time:</strong> After Marriage</p> -->
+    <p><strong>Date:</strong> Feb 13, 2026</p>
+    <p><strong>Venue:</strong> SRP Marriage Hall</p>
+  </div>
+
+</section>
+<style>/* Section Wrapper */
+.events-section {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 20px;
+}
+
+/* Title */
+.events-title {
+  text-align: center;
+  font-size: 28px;
+  color: #7a5735;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+.footer-line {
+  width: 80%;
+  height: 2px;
+  margin: 25px auto;
+  background: linear-gradient(to right, transparent,  #a36b01, #6e4102bd, transparent);
+  border-radius: 50px;
+  animation: glowLine 3s infinite alternate ease-in-out;
+}
+
+/* Event Card */
+.event-card {
+  background: #fff5eb;
+  padding: 18px 20px;
+  margin: 18px 0;
+  border-radius: 15px;
+  border: 2px dashed #cfb193;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-card h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  color: #6a462a;
+}
+
+.event-card p {
+  margin: 3px 0;
+  color: #5a3e2b;
+  font-size: 15px;
+}
+
+/* 🌟 Responsive */
+@media (max-width: 480px) {
+  .events-section {
+    margin: 30px 10px;
+  }
+
+  .events-title {
+    font-size: 22px;
+  }
+
+  .event-card {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .event-card h3 {
+    font-size: 18px;
+  }
+
+  .event-card p {
+    font-size: 13px;
+  }
+}
+</style>
+</div>
+<script>
+const target = new Date("February 14, 2026 09:00:00").getTime();
+
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = target - now;
+
+  const d = Math.floor(diff / (1000*60*60*24));
+  const h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const m = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const s = Math.floor((diff % (1000*60)) / 1000);
+
+  document.getElementById("cd-days").innerHTML = d + "<br>Days";
+  document.getElementById("cd-hours").innerHTML = h + "<br>Hours";
+  document.getElementById("cd-min").innerHTML = m + "<br>Min";
+  document.getElementById("cd-sec").innerHTML = s + "<br>Sec";
+
+}, 1000);
+</script>
+<script>
+let currentLang = "en";
+
+document.getElementById("langBtn").addEventListener("click", () => {
+    const elements = document.querySelectorAll(".lang");
+
+    if (currentLang === "en") {
+        elements.forEach(el => el.innerHTML = el.getAttribute("data-ta"));
+        document.getElementById("langBtn").innerText = "English";
+        currentLang = "ta";
+    } else {
+        elements.forEach(el => el.innerHTML = el.getAttribute("data-en"));
+        document.getElementById("langBtn").innerText = "தமிழ்";
+        currentLang = "en";
+    }
+});
+</script>
+
+<!-- FADE-OUT SCRIPT -->
+<script>
+/* Fade the welcome image */
+window.addEventListener('scroll', () => {
+    const img = document.getElementById('welcomeImg');
+    const fadeEnd = 400;
+    const opacity = Math.max(1 - window.scrollY / fadeEnd, 0);
+    img.style.opacity = opacity;
+});
+
+/* Fade the fixed background overlay */
+window.addEventListener("scroll", () => {
+    const fade = Math.min(window.scrollY / 400, 1);
+    document.querySelector(".wrapper").style.setProperty("--fade-opacity", fade);
+});
+</script>
+
+ <div class="footer-line"></div>
+<style>
+ .creator-footer {
+    background-color: #fdf6ed;
+    color: #6c4f2d;
+    font-family: 'Playfair Display', serif; /* now it will load */
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+.footer-top {
+    margin-bottom: 20px;
+}
+
+.footer-logo .footer-image {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.creator-footer p {
+    margin: 5px 0;
+    font-size: 15px;
+    opacity: 0.9;
+}
+
+.creator-footer a {
+    text-decoration: none;
+    color: #8b1e2d;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.creator-footer a:hover {
+    color: #b8926a;
+    text-decoration: underline;
+}
+
+.contact-links {
+    margin: 20px 0;
+}
+
+.contact-links a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 20px;
+    color: #8b1e2d;
+    transition: all 0.3s ease;
+}
+
+.contact-links a:hover {
+    color: #b8926a;
+    transform: scale(1.2);
+}
+
+.footer-bottom {
+    font-size: 13px;
+    color: #8b1e2d;
+    opacity: 0.7;
+    margin-top: 10px;
+}
+
+</style>
+<div class="footer-image-container">
+    <img src="./images/3.png" 
+         alt="Decorative Footer" class="footer-image">
+</div>
+<footer class="creator-footer">
+  <div class="footer-top">
+    <div class="footer-logo">
+      <img src="your-logo.png" alt="Logo" class="footer-image">
+    </div>
+    <p>Created with ❤️ by <a href="https://www.instagram.com/faceofteju/" target="_blank">Teju</a></p>
+  </div>
+
+  <div class="contact-links">
+    <a href="https://www.instagram.com/faceofteju/" target="_blank" class="contact-icon">
+      <i class="fab fa-instagram"></i>
+    </a>
+
+    <a href="mailto:yourmail@example.com" target="_blank" class="contact-icon">
+      <i class="fa fa-envelope"></i>
+    </a>
+
+    <a href="https://github.com/TejuCodes" target="_blank" class="contact-icon">
+      <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://www.linkedin.com/in/tejashwin2004" target="_blank" class="contact-icon">
+      <i class="fab fa-linkedin"></i>
+    </a>
+
+    <a href="tel:+917795500636" class="contact-icon">
+      <i class="fas fa-phone"></i>
+    </a>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2025 Teju. All rights reserved.</p>
+  </div>
+</footer>
+
+
+</body>
+</html>
